@@ -72,6 +72,14 @@
 
     </dependencies>
 
+    <repositories>
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/Joajak92/my-textformatter</url>
+        </repository>
+    </repositories>
+
+
     <build>
         <plugins>
             <plugin>
