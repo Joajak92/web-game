@@ -2,14 +2,18 @@ name: Maven Build
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
   workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: read
 
 jobs:
   build:
     runs-on: ubuntu-latest
     env:
+      GITHUB_USERNAME: Joajak92
       GITHUB_TOKEN: ${{ secrets.TOKEN }}
 
     steps:
@@ -20,10 +24,11 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '17'
+          java-version: "17"
           server-id: github
-          server-username: GITHUB_ACTOR
+          server-username: GITHUB_USERNAME
           server-password: GITHUB_TOKEN
+          cache: maven
 
       - name: Bygg projektet
-        run: mvn -B clean package --file pom.xml
+        run: mvn -B -U clean package --file pom.xml
