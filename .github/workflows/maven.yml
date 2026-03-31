@@ -10,7 +10,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      GITHUB_USERNAME: Joajak92
       GITHUB_TOKEN: ${{ secrets.TOKEN }}
 
     steps:
